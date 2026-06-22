@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwen Labidi — Dev Roadmap 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #080B10;
+            --bg2: #0D1117;
+            --bg3: #111820;
+            --surface: #161D27;
+            --border: rgba(255, 255, 255, 0.07);
+            --border-hover: rgba(255, 255, 255, 0.16);
+            --text: #E8EDF2;
+            --muted: #7A8A99;
+            --faint: #3A4A58;
+            --accent: #4DFFC3;
+            --accent-dim: rgba(77, 255, 195, 0.10);
+            --purple: #9B7FFF;
+            --purple-dim: rgba(155, 127, 255, 0.10);
+            --coral: #FF6B6B;
+            --coral-dim: rgba(255, 107, 107, 0.10);
+            --amber: #FFB547;
+            --amber-dim: rgba(255, 181, 71, 0.10);
+            --blue: #4DA6FF;
+            --blue-dim: rgba(77, 166, 255, 0.10);
+            --pink: #FF7DC6;
+            --pink-dim: rgba(255, 125, 198, 0.10);
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 15px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            height: 58px;
+            background: rgba(8, 11, 16, 0.90);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 15px;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 4px;
+        }
+
+        .nav-filter {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--muted);
+            background: none;
+            border: 1px solid transparent;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.04em;
+        }
+
+        .nav-filter:hover {
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .nav-filter.active {
+            color: var(--accent);
+            border-color: rgba(77, 255, 195, 0.3);
+            background: var(--accent-dim);
+        }
+
+        .nav-right {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .nav-right span {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* HERO */
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 110px 40px 60px;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--accent);
+            display: block;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 em {
+            color: var(--muted);
+            font-style: normal;
+        }
+
+        .hero-sub {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 560px;
+            margin-bottom: 40px;
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px 20px;
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--faint);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .stat-sub {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 4px;
+            font-family: var(--font-mono);
+        }
+
+        /* OVERALL PROGRESS */
+        .overall-bar {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 60px;
+        }
+
+        .overall-bar-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .overall-bar-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+        }
+
+        .overall-bar-pct {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .progress-track {
+            height: 6px;
+            background: var(--bg3);
+            border-radius: 100px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 100px;
+            background: linear-gradient(90deg, var(--accent) 0%, #00e5a0 100%);
+            transition: width 0.8s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        /* SECTION */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .section-divider {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* PHASE HEADER */
+        .phase-block {
+            margin-bottom: 48px;
+        }
+
+        .phase-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        /* LEARNING TRACK */
+        .learn-track {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .learn-track-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 24px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .learn-track-header:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .learn-track-title-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .learn-tech-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 500;
+            padding: 3px 9px;
+            border-radius: 4px;
+            letter-spacing: 0.04em;
+            flex-shrink: 0;
+        }
+
+        .learn-track-name {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .learn-track-weeks {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .learn-track-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .track-pct {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--accent);
+            min-width: 36px;
+            text-align: right;
+        }
+
+        .mini-bar {
+            width: 80px;
+            height: 4px;
+            background: var(--bg3);
+            border-radius: 100px;
+            overflow: hidden;
+        }
+
+        .mini-fill {
+            height: 100%;
+            border-radius: 100px;
+            transition: width 0.6s ease;
+        }
+
+        .chevron {
+            color: var(--faint);
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .learn-track.open .chevron {
+            transform: rotate(180deg);
+        }
+
+        .learn-track-body {
+            display: none;
+            border-top: 1px solid var(--border);
+        }
+
+        .learn-track.open .learn-track-body {
+            display: block;
+        }
+
+        .learn-steps {
+            list-style: none;
+        }
+
+        .learn-step {
+            display: grid;
+            grid-template-columns: 24px 1fr auto;
+            align-items: start;
+            gap: 14px;
+            padding: 14px 24px;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+        }
+
+        .learn-step:last-child {
+            border-bottom: none;
+        }
+
+        .learn-step:hover {
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .step-check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid var(--faint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: all 0.2s;
+        }
+
+        .step-check.done {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .step-check.done::after {
+            content: '✓';
+            font-size: 10px;
+            color: #080B10;
+            font-weight: 700;
+        }
+
+        .step-info {}
+
+        .step-title {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .step-desc {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .step-duration {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--faint);
+            white-space: nowrap;
+            margin-top: 3px;
+            letter-spacing: 0.04em;
+        }
+
+        /* PROJECT CARDS */
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.25s;
+        }
+
+        .project-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .project-card-header {
+            display: grid;
+            grid-template-columns: 48px 1fr auto;
+            align-items: start;
+            gap: 16px;
+            padding: 20px 24px;
+            cursor: pointer;
+        }
+
+        .project-num {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .proj-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+
+        .proj-cat {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            letter-spacing: 0.04em;
+        }
+
+        .proj-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        .status-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+        }
+
+        .s-locked .status-dot {
+            background: var(--faint);
+        }
+
+        .s-active .status-dot {
+            background: var(--amber);
+            box-shadow: 0 0 6px var(--amber);
+            animation: pulse 2s infinite;
+        }
+
+        .s-done .status-dot {
+            background: var(--accent);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.4
+            }
+        }
+
+        .proj-title {
+            font-family: var(--font-display);
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .proj-tagline {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .proj-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .proj-duration {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--faint);
+            white-space: nowrap;
+        }
+
+        .proj-progress-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .proj-pct {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--accent);
+            min-width: 28px;
+            text-align: right;
+        }
+
+        .proj-bar {
+            width: 64px;
+            height: 3px;
+            background: var(--bg3);
+            border-radius: 100px;
+            overflow: hidden;
+        }
+
+        .proj-fill {
+            height: 100%;
+            border-radius: 100px;
+            transition: width 0.6s ease;
+        }
+
+        .expand-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.25s;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .project-card.open .expand-btn {
+            transform: rotate(45deg);
+            color: var(--accent);
+            border-color: rgba(77, 255, 195, 0.3);
+        }
+
+        .project-card-body {
+            display: none;
+            border-top: 1px solid var(--border);
+            padding: 20px 24px;
+        }
+
+        .project-card.open .project-card-body {
+            display: block;
+        }
+
+        /* TIMELINE inside project */
+        .proj-timeline {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .proj-tl-item {
+            display: grid;
+            grid-template-columns: 14px 1fr;
+            gap: 12px;
+            padding: 6px 0;
+            font-size: 13px;
+            position: relative;
+        }
+
+        .proj-tl-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 22px;
+            width: 1px;
+            height: calc(100% - 10px);
+            background: var(--border);
+        }
+
+        .tl-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1.5px solid var(--faint);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .tl-dot.complete {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .tl-dot.active {
+            background: var(--amber);
+            border-color: var(--amber);
+        }
+
+        .tl-title {
+            font-weight: 500;
+        }
+
+        .tl-time {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--faint);
+            margin-top: 1px;
+        }
+
+        .proj-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            letter-spacing: 0.03em;
+        }
+
+        /* NOTES input */
+        .proj-notes-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--faint);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .proj-notes-input {
+            width: 100%;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 10px 14px;
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 13px;
+            resize: vertical;
+            min-height: 60px;
+            line-height: 1.5;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .proj-notes-input:focus {
+            border-color: rgba(77, 255, 195, 0.3);
+        }
+
+        .proj-notes-input::placeholder {
+            color: var(--faint);
+        }
+
+        /* MILESTONE PROGRESS in project */
+        .milestone-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .milestone-btn {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            background: none;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.03em;
+        }
+
+        .milestone-btn:hover {
+            border-color: var(--border-hover);
+            color: var(--text);
+        }
+
+        .milestone-btn.done {
+            background: var(--accent-dim);
+            border-color: rgba(77, 255, 195, 0.3);
+            color: var(--accent);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 32px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-txt {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--faint);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 16px;
+            }
+
+            .nav-center {
+                display: none;
+            }
+
+            .hero,
+            .section {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .project-card-header {
+                grid-template-columns: 40px 1fr;
+            }
+
+            .proj-right {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo">ML<span>.</span>roadmap</div>
+        <div class="nav-center">
+            <button class="nav-filter active" onclick="filterCards('all', this)">All</button>
+            <button class="nav-filter" onclick="filterCards('learn', this)">Learning</button>
+            <button class="nav-filter" onclick="filterCards('build', this)">Projects</button>
+        </div>
+        <div class="nav-right">Overall: <span id="nav-pct">0%</span></div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-eyebrow">Dev Roadmap · 2025–2026</div>
+        <h1>The plan.<br><em>Build it all.</em></h1>
+        <p class="hero-sub">10 projects. 5 new technologies. 18 months from general idea to immersive WebXR portfolio.
+            Track every step here.</p>
+
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-label">Projects</div>
+                <div class="stat-value" id="s-projects">10</div>
+                <div class="stat-sub" id="s-projects-sub">0 completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Timeline</div>
+                <div class="stat-value">18</div>
+                <div class="stat-sub">months total</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Technologies</div>
+                <div class="stat-value">5</div>
+                <div class="stat-sub">Three.js · R3F · RN · Nest · Next</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Learning steps</div>
+                <div class="stat-value" id="s-steps">0</div>
+                <div class="stat-sub" id="s-steps-sub">0 done</div>
+            </div>
+        </div>
+
+        <div class="overall-bar">
+            <div class="overall-bar-top">
+                <span class="overall-bar-label">OVERALL PROGRESS</span>
+                <span class="overall-bar-pct" id="overall-pct">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="overall-fill" style="width:0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── LEARNING TRACKS ─────────────────────────────────── -->
+    <div class="section" id="learn-section">
+        <div class="section-header">
+            <div class="section-title">Learning Curve</div>
+            <div class="section-divider"></div>
+        </div>
+
+        <!-- THREE.JS -->
+        <div class="learn-track" id="track-threejs">
+            <div class="learn-track-header" onclick="toggleTrack('track-threejs')">
+                <div class="learn-track-title-row">
+                    <span class="learn-tech-badge"
+                        style="background:var(--purple-dim);color:var(--purple)">Three.js</span>
+                    <span class="learn-track-name">Three.js — 3D Fundamentals</span>
+                    <span class="learn-track-weeks">6 weeks</span>
+                </div>
+                <div class="learn-track-right">
+                    <span class="track-pct" id="pct-threejs">0%</span>
+                    <div class="mini-bar">
+                        <div class="mini-fill" id="bar-threejs" style="width:0%;background:var(--purple)"></div>
+                    </div>
+                    <span class="chevron">▾</span>
+                </div>
+            </div>
+            <div class="learn-track-body">
+                <ul class="learn-steps" id="steps-threejs">
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'threejs')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Scene, Camera, Renderer basics</div>
+                            <div class="step-desc">Set up a scene from scratch. Understand PerspectiveCamera,
+                                WebGLRenderer, requestAnimationFrame loop.</div>
+                        </div>
+                        <div class="step-duration">Days 1–3</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'threejs')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Geometries & Materials</div>
+                            <div class="step-desc">BoxGeometry, SphereGeometry. MeshBasicMaterial, MeshStandardMaterial,
+                                MeshPhysicalMaterial. Lights and shadows.</div>
+                        </div>
+                        <div class="step-duration">Days 4–7</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'threejs')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Textures & UV mapping</div>
+                            <div class="step-desc">TextureLoader, envMaps, normal maps, roughness/metalness maps.
+                                Understand UVs.</div>
+                        </div>
+                        <div class="step-duration">Week 2</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'threejs')"></div>
+                        <div class="step-info">
+                            <div class="step-title">OrbitControls & Raycasting</div>
+                            <div class="step-desc">Camera controls, mouse picking, hover/click detection on 3D objects.
+                            </div>
+                        </div>
+                        <div class="step-duration">Week 2</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'threejs')"></div>
+                        <div class="step-info">
+                            <div class="step-title">GLSL Shaders intro</div>
+                            <div class="step-desc">Vertex & fragment shaders. ShaderMaterial, uniforms, varyings,
+                                built-in attributes. Animate with u_time.</div>
+                        </div>
+                        <div class="step-duration">Weeks 3–4</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'threejs')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Particle systems & InstancedMesh</div>
+                            <div class="step-desc">BufferGeometry, Points, InstancedMesh for 10k+ objects. Performance
+                                patterns.</div>
+                        </div>
+                        <div class="step-duration">Week 5</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'threejs')"></div>
+                        <div class="step-info">
+                            <div class="step-title">GLTF models & Blender pipeline</div>
+                            <div class="step-desc">GLTFLoader, Draco compression, Blender export settings, animations
+                                with AnimationMixer.</div>
+                        </div>
+                        <div class="step-duration">Week 6</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- REACT THREE FIBER -->
+        <div class="learn-track" id="track-r3f">
+            <div class="learn-track-header" onclick="toggleTrack('track-r3f')">
+                <div class="learn-track-title-row">
+                    <span class="learn-tech-badge" style="background:var(--accent-dim);color:var(--accent)">R3F</span>
+                    <span class="learn-track-name">React Three Fiber — Declarative 3D</span>
+                    <span class="learn-track-weeks">4 weeks</span>
+                </div>
+                <div class="learn-track-right">
+                    <span class="track-pct" id="pct-r3f">0%</span>
+                    <div class="mini-bar">
+                        <div class="mini-fill" id="bar-r3f" style="width:0%;background:var(--accent)"></div>
+                    </div>
+                    <span class="chevron">▾</span>
+                </div>
+            </div>
+            <div class="learn-track-body">
+                <ul class="learn-steps" id="steps-r3f">
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'r3f')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Canvas, mesh, useFrame hook</div>
+                            <div class="step-desc">Translate raw Three.js knowledge to R3F JSX. Understand how
+                                &lt;Canvas&gt; and the render loop work.</div>
+                        </div>
+                        <div class="step-duration">Days 1–4</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'r3f')"></div>
+                        <div class="step-info">
+                            <div class="step-title">@react-three/drei helpers</div>
+                            <div class="step-desc">OrbitControls, Html, Text, Stars, Environment, MeshDistortMaterial,
+                                ScrollControls. The productivity layer.</div>
+                        </div>
+                        <div class="step-duration">Week 2</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'r3f')"></div>
+                        <div class="step-info">
+                            <div class="step-title">ShaderMaterial in R3F + useRef</div>
+                            <div class="step-desc">Pass uniforms reactively, update on each frame. Bridge GLSL with
+                                React state.</div>
+                        </div>
+                        <div class="step-duration">Week 2</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'r3f')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Postprocessing effects</div>
+                            <div class="step-desc">@react-three/postprocessing: Bloom, ChromaticAberration,
+                                DepthOfField, Noise. Effect composer patterns.</div>
+                        </div>
+                        <div class="step-duration">Week 3</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'r3f')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Performance: Suspense, LOD, visibility culling</div>
+                            <div class="step-desc">Lazy loading assets, useGLTF, Bvh, Detailed. Keep 60fps with large
+                                scenes.</div>
+                        </div>
+                        <div class="step-duration">Week 4</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- REACT NATIVE -->
+        <div class="learn-track" id="track-rn">
+            <div class="learn-track-header" onclick="toggleTrack('track-rn')">
+                <div class="learn-track-title-row">
+                    <span class="learn-tech-badge" style="background:var(--coral-dim);color:var(--coral)">RN</span>
+                    <span class="learn-track-name">React Native — Mobile Dev</span>
+                    <span class="learn-track-weeks">5 weeks</span>
+                </div>
+                <div class="learn-track-right">
+                    <span class="track-pct" id="pct-rn">0%</span>
+                    <div class="mini-bar">
+                        <div class="mini-fill" id="bar-rn" style="width:0%;background:var(--coral)"></div>
+                    </div>
+                    <span class="chevron">▾</span>
+                </div>
+            </div>
+            <div class="learn-track-body">
+                <ul class="learn-steps" id="steps-rn">
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'rn')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Expo setup & core components</div>
+                            <div class="step-desc">View, Text, Image, ScrollView, FlatList, TouchableOpacity,
+                                StyleSheet. The core vocabulary.</div>
+                        </div>
+                        <div class="step-duration">Days 1–4</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'rn')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Navigation with Expo Router</div>
+                            <div class="step-desc">File-based routing, Stack, Tabs, dynamic routes, deep linking, back
+                                handling.</div>
+                        </div>
+                        <div class="step-duration">Week 2</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'rn')"></div>
+                        <div class="step-info">
+                            <div class="step-title">State: Zustand + React Query</div>
+                            <div class="step-desc">Global state management patterns for mobile. Server state, optimistic
+                                updates, infinite scroll.</div>
+                        </div>
+                        <div class="step-duration">Week 2</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'rn')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Animations with Reanimated 3</div>
+                            <div class="step-desc">useSharedValue, useAnimatedStyle, gestures, spring physics. The right
+                                way to animate on mobile.</div>
+                        </div>
+                        <div class="step-duration">Week 3</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'rn')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Push notifications & Expo APIs</div>
+                            <div class="step-desc">expo-notifications, camera, location, SecureStore. Accessing native
+                                device APIs.</div>
+                        </div>
+                        <div class="step-duration">Week 4</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'rn')"></div>
+                        <div class="step-info">
+                            <div class="step-title">App Store & Play Store deployment</div>
+                            <div class="step-desc">EAS Build, signing, metadata, screenshots, review process. Ship a
+                                real app.</div>
+                        </div>
+                        <div class="step-duration">Week 5</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- NESTJS -->
+        <div class="learn-track" id="track-nest">
+            <div class="learn-track-header" onclick="toggleTrack('track-nest')">
+                <div class="learn-track-title-row">
+                    <span class="learn-tech-badge" style="background:var(--amber-dim);color:var(--amber)">Nest</span>
+                    <span class="learn-track-name">NestJS — Backend Architecture</span>
+                    <span class="learn-track-weeks">4 weeks</span>
+                </div>
+                <div class="learn-track-right">
+                    <span class="track-pct" id="pct-nest">0%</span>
+                    <div class="mini-bar">
+                        <div class="mini-fill" id="bar-nest" style="width:0%;background:var(--amber)"></div>
+                    </div>
+                    <span class="chevron">▾</span>
+                </div>
+            </div>
+            <div class="learn-track-body">
+                <ul class="learn-steps" id="steps-nest">
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'nest')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Modules, Controllers, Services</div>
+                            <div class="step-desc">The NestJS DI container. Understand how modules wire together, how
+                                services are injected.</div>
+                        </div>
+                        <div class="step-duration">Days 1–4</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'nest')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Pipes, Guards, Interceptors</div>
+                            <div class="step-desc">Request validation (class-validator), JWT auth guards, response
+                                transformation interceptors.</div>
+                        </div>
+                        <div class="step-duration">Week 2</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'nest')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Prisma ORM + PostgreSQL</div>
+                            <div class="step-desc">Schema definition, migrations, relations, transactions, raw queries.
+                                Data layer patterns.</div>
+                        </div>
+                        <div class="step-duration">Week 2–3</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'nest')"></div>
+                        <div class="step-info">
+                            <div class="step-title">WebSockets with Socket.io</div>
+                            <div class="step-desc">@WebSocketGateway, real-time rooms, namespaces, auth over WS.</div>
+                        </div>
+                        <div class="step-duration">Week 3</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'nest')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Docker + Railway deployment</div>
+                            <div class="step-desc">Dockerize a NestJS app, env vars, health checks, deploy to Railway,
+                                connect Postgres.</div>
+                        </div>
+                        <div class="step-duration">Week 4</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- NEXT.JS -->
+        <div class="learn-track" id="track-next">
+            <div class="learn-track-header" onclick="toggleTrack('track-next')">
+                <div class="learn-track-title-row">
+                    <span class="learn-tech-badge" style="background:var(--blue-dim);color:var(--blue)">Next</span>
+                    <span class="learn-track-name">Next.js 14 — App Router & Beyond</span>
+                    <span class="learn-track-weeks">3 weeks</span>
+                </div>
+                <div class="learn-track-right">
+                    <span class="track-pct" id="pct-next">0%</span>
+                    <div class="mini-bar">
+                        <div class="mini-fill" id="bar-next" style="width:0%;background:var(--blue)"></div>
+                    </div>
+                    <span class="chevron">▾</span>
+                </div>
+            </div>
+            <div class="learn-track-body">
+                <ul class="learn-steps" id="steps-next">
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'next')"></div>
+                        <div class="step-info">
+                            <div class="step-title">App Router file conventions</div>
+                            <div class="step-desc">layout.tsx, page.tsx, loading.tsx, error.tsx, route groups, parallel
+                                routes. Understand the mental model shift from Pages Router.</div>
+                        </div>
+                        <div class="step-duration">Days 1–4</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'next')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Server Components vs Client Components</div>
+                            <div class="step-desc">When to use 'use client'. Data fetching in RSC, async components,
+                                fetch with caching tags.</div>
+                        </div>
+                        <div class="step-duration">Week 2</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'next')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Server Actions & forms</div>
+                            <div class="step-desc">Mutations without an API route. revalidatePath, revalidateTag,
+                                optimistic updates.</div>
+                        </div>
+                        <div class="step-duration">Week 2</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'next')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Middleware, auth (NextAuth), edge runtime</div>
+                            <div class="step-desc">Auth patterns with NextAuth v5, protecting routes at the middleware
+                                layer, edge-compatible code.</div>
+                        </div>
+                        <div class="step-duration">Week 3</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- WEBXR -->
+        <div class="learn-track" id="track-webxr">
+            <div class="learn-track-header" onclick="toggleTrack('track-webxr')">
+                <div class="learn-track-title-row">
+                    <span class="learn-tech-badge" style="background:var(--pink-dim);color:var(--pink)">XR</span>
+                    <span class="learn-track-name">WebXR & Augmented Reality</span>
+                    <span class="learn-track-weeks">4 weeks</span>
+                </div>
+                <div class="learn-track-right">
+                    <span class="track-pct" id="pct-webxr">0%</span>
+                    <div class="mini-bar">
+                        <div class="mini-fill" id="bar-webxr" style="width:0%;background:var(--pink)"></div>
+                    </div>
+                    <span class="chevron">▾</span>
+                </div>
+            </div>
+            <div class="learn-track-body">
+                <ul class="learn-steps" id="steps-webxr">
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'webxr')"></div>
+                        <div class="step-info">
+                            <div class="step-title">WebXR Device API basics</div>
+                            <div class="step-desc">XRSession, XRReferenceSpace, requestAnimationFrame in XR,
+                                immersive-ar vs immersive-vr modes.</div>
+                        </div>
+                        <div class="step-duration">Days 1–4</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'webxr')"></div>
+                        <div class="step-info">
+                            <div class="step-title">AR hit testing & plane detection</div>
+                            <div class="step-desc">XRHitTestSource, place 3D objects on real surfaces. Understand
+                                coordinate spaces in AR.</div>
+                        </div>
+                        <div class="step-duration">Week 2</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'webxr')"></div>
+                        <div class="step-info">
+                            <div class="step-title">R3F + @react-three/xr</div>
+                            <div class="step-desc">XR-enabled canvas, useXR, useController, useHitTest hooks.
+                                Declarative AR with R3F.</div>
+                        </div>
+                        <div class="step-duration">Week 2–3</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'webxr')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Image tracking & marker detection</div>
+                            <div class="step-desc">Track physical images/QR codes, overlay 3D content. Use cases for
+                                product visualization.</div>
+                        </div>
+                        <div class="step-duration">Week 3</div>
+                    </li>
+                    <li class="learn-step">
+                        <div class="step-check" onclick="toggleStep(this,'webxr')"></div>
+                        <div class="step-info">
+                            <div class="step-title">Testing on device & fallbacks</div>
+                            <div class="step-desc">Chrome on Android, iOS fallbacks with model-viewer, polyfills.
+                                Progressive enhancement for non-XR browsers.</div>
+                        </div>
+                        <div class="step-duration">Week 4</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── PROJECTS ─────────────────────────────────────────── -->
+    <div class="section" id="build-section">
+        <div class="section-header">
+            <div class="section-title">Projects — 18 Month Plan</div>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- P1 -->
+            <div class="project-card" id="proj-1">
+                <div class="project-card-header" onclick="toggleProject('proj-1')">
+                    <div class="project-num" style="background:var(--accent-dim);color:var(--accent)">01</div>
+                    <div>
+                        <div class="proj-meta-row">
+                            <span class="proj-cat" style="background:var(--accent-dim);color:var(--accent)">Performance
+                                · Case Study</span>
+                            <span class="proj-status s-locked"><span class="status-dot"></span>Month 1</span>
+                        </div>
+                        <div class="proj-title">Web Performance Audit</div>
+                        <div class="proj-tagline">Real audit on a public site — from slow to fast, documented end to
+                            end.</div>
+                    </div>
+                    <div class="proj-right">
+                        <div class="proj-duration">~3 weeks</div>
+                        <div class="proj-progress-wrap">
+                            <span class="proj-pct" id="ppct-1">0%</span>
+                            <div class="proj-bar">
+                                <div class="proj-fill" id="pfill-1" style="width:0%;background:var(--accent)"></div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Full Lighthouse audit on a real
+                        MENA e-commerce site. Document every fix, before/after screenshots, write a public case study.
+                    </p>
+                    <div class="proj-tech">
+                        <span class="tech-tag">Lighthouse</span><span class="tech-tag">Chrome DevTools</span><span
+                            class="tech-tag">Core Web Vitals</span><span class="tech-tag">WebPageTest</span><span
+                            class="tech-tag">Next.js Image</span>
+                    </div>
+                    <ul class="proj-timeline">
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-1-1"></div>
+                            <div>
+                                <div class="tl-title">Pick target site, run baseline Lighthouse</div>
+                                <div class="tl-time">Days 1–2</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-1-2"></div>
+                            <div>
+                                <div class="tl-title">Identify top 5 bottlenecks, document</div>
+                                <div class="tl-time">Days 3–5</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-1-3"></div>
+                            <div>
+                                <div class="tl-title">Implement fixes: images, bundle, fonts, caching</div>
+                                <div class="tl-time">Week 2</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-1-4"></div>
+                            <div>
+                                <div class="tl-title">Write case study, publish to GitHub + portfolio</div>
+                                <div class="tl-time">Week 3</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="proj-notes-label">Notes / blockers</div>
+                    <textarea class="proj-notes-input" id="notes-1" placeholder="Add notes here..."
+                        onchange="saveNotes('1')"></textarea>
+                </div>
+            </div>
+
+            <!-- P2 -->
+            <div class="project-card" id="proj-2">
+                <div class="project-card-header" onclick="toggleProject('proj-2')">
+                    <div class="project-num" style="background:var(--purple-dim);color:var(--purple)">02</div>
+                    <div>
+                        <div class="proj-meta-row">
+                            <span class="proj-cat" style="background:var(--purple-dim);color:var(--purple)">SaaS ·
+                                Full-Stack · AI</span>
+                            <span class="proj-status s-locked"><span class="status-dot"></span>Months 2–4</span>
+                        </div>
+                        <div class="proj-title">AI Content Studio</div>
+                        <div class="proj-tagline">SaaS platform for teams to generate, review, and publish AI-written
+                            content.</div>
+                    </div>
+                    <div class="proj-right">
+                        <div class="proj-duration">~10 weeks</div>
+                        <div class="proj-progress-wrap">
+                            <span class="proj-pct" id="ppct-2">0%</span>
+                            <div class="proj-bar">
+                                <div class="proj-fill" id="pfill-2" style="width:0%;background:var(--purple)"></div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Build while learning Next.js App
+                        Router + NestJS in parallel. The real-world project that cements both frameworks.</p>
+                    <div class="proj-tech">
+                        <span class="tech-tag">Next.js 14</span><span class="tech-tag">NestJS</span><span
+                            class="tech-tag">PostgreSQL</span><span class="tech-tag">Prisma</span><span
+                            class="tech-tag">Claude API</span><span class="tech-tag">Stripe</span><span
+                            class="tech-tag">Redis</span>
+                    </div>
+                    <ul class="proj-timeline">
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-2-1"></div>
+                            <div>
+                                <div class="tl-title">Learn Next.js App Router (3 weeks)</div>
+                                <div class="tl-time">Month 2</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-2-2"></div>
+                            <div>
+                                <div class="tl-title">Learn NestJS fundamentals (4 weeks)</div>
+                                <div class="tl-time">Month 2–3</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-2-3"></div>
+                            <div>
+                                <div class="tl-title">Build auth, workspace, team roles</div>
+                                <div class="tl-time">Month 3</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-2-4"></div>
+                            <div>
+                                <div class="tl-title">AI generation + streaming + approval flow</div>
+                                <div class="tl-time">Month 3–4</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-2-5"></div>
+                            <div>
+                                <div class="tl-title">Stripe billing, deploy, case study</div>
+                                <div class="tl-time">Month 4</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="proj-notes-label">Notes / blockers</div>
+                    <textarea class="proj-notes-input" id="notes-2" placeholder="Add notes here..."
+                        onchange="saveNotes('2')"></textarea>
+                </div>
+            </div>
+
+            <!-- P3 -->
+            <div class="project-card" id="proj-3">
+                <div class="project-card-header" onclick="toggleProject('proj-3')">
+                    <div class="project-num" style="background:var(--blue-dim);color:var(--blue)">03</div>
+                    <div>
+                        <div class="proj-meta-row">
+                            <span class="proj-cat" style="background:var(--blue-dim);color:var(--blue)">Mobile · React
+                                Native · AI</span>
+                            <span class="proj-status s-locked"><span class="status-dot"></span>Months 5–7</span>
+                        </div>
+                        <div class="proj-title">DevMatch</div>
+                        <div class="proj-tagline">Mobile app for MENA developers to find collaborators for their next
+                            project.</div>
+                    </div>
+                    <div class="proj-right">
+                        <div class="proj-duration">~10 weeks</div>
+                        <div class="proj-progress-wrap">
+                            <span class="proj-pct" id="ppct-3">0%</span>
+                            <div class="proj-bar">
+                                <div class="proj-fill" id="pfill-3" style="width:0%;background:var(--blue)"></div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Learn React Native while building
+                        this — use NestJS backend from previous project as a pattern.</p>
+                    <div class="proj-tech">
+                        <span class="tech-tag">React Native</span><span class="tech-tag">Expo Router</span><span
+                            class="tech-tag">NestJS</span><span class="tech-tag">WebSockets</span><span
+                            class="tech-tag">Zustand</span><span class="tech-tag">Claude API</span>
+                    </div>
+                    <ul class="proj-timeline">
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-3-1"></div>
+                            <div>
+                                <div class="tl-title">Learn React Native + Expo (5 weeks)</div>
+                                <div class="tl-time">Month 5</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-3-2"></div>
+                            <div>
+                                <div class="tl-title">Build profiles, auth, collab board</div>
+                                <div class="tl-time">Month 6</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-3-3"></div>
+                            <div>
+                                <div class="tl-title">Real-time chat + AI matching</div>
+                                <div class="tl-time">Month 6–7</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-3-4"></div>
+                            <div>
+                                <div class="tl-title">App Store + Play Store submission</div>
+                                <div class="tl-time">Month 7</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="proj-notes-label">Notes / blockers</div>
+                    <textarea class="proj-notes-input" id="notes-3" placeholder="Add notes here..."
+                        onchange="saveNotes('3')"></textarea>
+                </div>
+            </div>
+
+            <!-- P4 -->
+            <div class="project-card" id="proj-4">
+                <div class="project-card-header" onclick="toggleProject('proj-4')">
+                    <div class="project-num" style="background:var(--purple-dim);color:var(--purple)">04</div>
+                    <div>
+                        <div class="proj-meta-row">
+                            <span class="proj-cat" style="background:var(--purple-dim);color:var(--purple)">3D · WebGL ·
+                                Immersive</span>
+                            <span class="proj-status s-locked"><span class="status-dot"></span>Month 8</span>
+                        </div>
+                        <div class="proj-title">AI Universe Explorer</div>
+                        <div class="proj-tagline">Interactive 3D galaxy where every star is an AI model — fly through
+                            and explore.</div>
+                    </div>
+                    <div class="proj-right">
+                        <div class="proj-duration">~4 weeks</div>
+                        <div class="proj-progress-wrap">
+                            <span class="proj-pct" id="ppct-4">0%</span>
+                            <div class="proj-bar">
+                                <div class="proj-fill" id="pfill-4" style="width:0%;background:var(--purple)"></div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">First R3F project after completing
+                        Three.js + R3F learning tracks. Particle systems, shaders, postprocessing.</p>
+                    <div class="proj-tech">
+                        <span class="tech-tag">React Three Fiber</span><span
+                            class="tech-tag">@react-three/drei</span><span class="tech-tag">GLSL</span><span
+                            class="tech-tag">Postprocessing</span><span class="tech-tag">Framer Motion</span>
+                    </div>
+                    <ul class="proj-timeline">
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-4-1"></div>
+                            <div>
+                                <div class="tl-title">Three.js + R3F learning (10 weeks total)</div>
+                                <div class="tl-time">Month 6–7 parallel</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-4-2"></div>
+                            <div>
+                                <div class="tl-title">50k star particle system + clustering</div>
+                                <div class="tl-time">Week 1–2</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-4-3"></div>
+                            <div>
+                                <div class="tl-title">Custom GLSL star shader + bloom effects</div>
+                                <div class="tl-time">Week 2–3</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-4-4"></div>
+                            <div>
+                                <div class="tl-title">Click-to-explore, UI overlays, deploy</div>
+                                <div class="tl-time">Week 4</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="proj-notes-label">Notes / blockers</div>
+                    <textarea class="proj-notes-input" id="notes-4" placeholder="Add notes here..."
+                        onchange="saveNotes('4')"></textarea>
+                </div>
+            </div>
+
+            <!-- P5 -->
+            <div class="project-card" id="proj-5">
+                <div class="project-card-header" onclick="toggleProject('proj-5')">
+                    <div class="project-num" style="background:var(--accent-dim);color:var(--accent)">05</div>
+                    <div>
+                        <div class="proj-meta-row">
+                            <span class="proj-cat" style="background:var(--accent-dim);color:var(--accent)">3D · Data
+                                Visualization</span>
+                            <span class="proj-status s-locked"><span class="status-dot"></span>Month 9</span>
+                        </div>
+                        <div class="proj-title">Global Tech Salaries in 3D</div>
+                        <div class="proj-tagline">3D globe where developer salaries rise as bars — real public dataset,
+                            fully interactive.</div>
+                    </div>
+                    <div class="proj-right">
+                        <div class="proj-duration">~4 weeks</div>
+                        <div class="proj-progress-wrap">
+                            <span class="proj-pct" id="ppct-5">0%</span>
+                            <div class="proj-bar">
+                                <div class="proj-fill" id="pfill-5" style="width:0%;background:var(--accent)"></div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Combines R3F with D3.js geo math.
+                        InstancedMesh for performance. A great portfolio piece showing data + 3D skills.</p>
+                    <div class="proj-tech">
+                        <span class="tech-tag">React Three Fiber</span><span class="tech-tag">D3.js</span><span
+                            class="tech-tag">GeoJSON</span><span class="tech-tag">InstancedMesh</span><span
+                            class="tech-tag">Zustand</span>
+                    </div>
+                    <ul class="proj-timeline">
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-5-1"></div>
+                            <div>
+                                <div class="tl-title">Globe geometry + GeoJSON country borders</div>
+                                <div class="tl-time">Week 1</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-5-2"></div>
+                            <div>
+                                <div class="tl-title">InstancedMesh salary bars + D3 projection</div>
+                                <div class="tl-time">Week 2</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-5-3"></div>
+                            <div>
+                                <div class="tl-title">Filters, animations, hover popups</div>
+                                <div class="tl-time">Week 3</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-5-4"></div>
+                            <div>
+                                <div class="tl-title">Mobile fallback, deploy, write-up</div>
+                                <div class="tl-time">Week 4</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="proj-notes-label">Notes / blockers</div>
+                    <textarea class="proj-notes-input" id="notes-5" placeholder="Add notes here..."
+                        onchange="saveNotes('5')"></textarea>
+                </div>
+            </div>
+
+            <!-- P6 -->
+            <div class="project-card" id="proj-6">
+                <div class="project-card-header" onclick="toggleProject('proj-6')">
+                    <div class="project-num" style="background:var(--coral-dim);color:var(--coral)">06</div>
+                    <div>
+                        <div class="proj-meta-row">
+                            <span class="proj-cat" style="background:var(--coral-dim);color:var(--coral)">3D · Scroll
+                                Storytelling</span>
+                            <span class="proj-status s-locked"><span class="status-dot"></span>Month 10–11</span>
+                        </div>
+                        <div class="proj-title">The History of the Web</div>
+                        <div class="proj-tagline">Scroll-driven 3D journey through the web's evolution — from 1991 to
+                            the AI era.</div>
+                    </div>
+                    <div class="proj-right">
+                        <div class="proj-duration">~6 weeks</div>
+                        <div class="proj-progress-wrap">
+                            <span class="proj-pct" id="ppct-6">0%</span>
+                            <div class="proj-bar">
+                                <div class="proj-fill" id="pfill-6" style="width:0%;background:var(--coral)"></div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">The most complex R3F project so
+                        far. 5 fully different 3D scenes + scroll-sync. Will require Blender basics for props.</p>
+                    <div class="proj-tech">
+                        <span class="tech-tag">React Three Fiber</span><span class="tech-tag">ScrollControls</span><span
+                            class="tech-tag">GSAP</span><span class="tech-tag">Blender</span><span class="tech-tag">GLSL
+                            transitions</span><span class="tech-tag">Howler.js</span>
+                    </div>
+                    <ul class="proj-timeline">
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-6-1"></div>
+                            <div>
+                                <div class="tl-title">Scene architecture + ScrollControls setup</div>
+                                <div class="tl-time">Week 1</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-6-2"></div>
+                            <div>
+                                <div class="tl-title">Build Web 1.0 + Flash era scenes</div>
+                                <div class="tl-time">Week 2</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-6-3"></div>
+                            <div>
+                                <div class="tl-title">Web 2.0 + Mobile era scenes</div>
+                                <div class="tl-time">Week 3–4</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-6-4"></div>
+                            <div>
+                                <div class="tl-title">AI era scene + GLSL transitions between eras</div>
+                                <div class="tl-time">Week 4–5</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-6-5"></div>
+                            <div>
+                                <div class="tl-title">Audio, reduced-motion fallback, deploy</div>
+                                <div class="tl-time">Week 6</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="proj-notes-label">Notes / blockers</div>
+                    <textarea class="proj-notes-input" id="notes-6" placeholder="Add notes here..."
+                        onchange="saveNotes('6')"></textarea>
+                </div>
+            </div>
+
+            <!-- P7 -->
+            <div class="project-card" id="proj-7">
+                <div class="project-card-header" onclick="toggleProject('proj-7')">
+                    <div class="project-num" style="background:var(--amber-dim);color:var(--amber)">07</div>
+                    <div>
+                        <div class="proj-meta-row">
+                            <span class="proj-cat" style="background:var(--amber-dim);color:var(--amber)">3D ·
+                                Generative Art · AI</span>
+                            <span class="proj-status s-locked"><span class="status-dot"></span>Month 12</span>
+                        </div>
+                        <div class="proj-title">Mood Canvas</div>
+                        <div class="proj-tagline">Type a word — "chaos", "nostalgia" — and watch a unique 3D artwork
+                            form in real time.</div>
+                    </div>
+                    <div class="proj-right">
+                        <div class="proj-duration">~4 weeks</div>
+                        <div class="proj-progress-wrap">
+                            <span class="proj-pct" id="ppct-7">0%</span>
+                            <div class="proj-bar">
+                                <div class="proj-fill" id="pfill-7" style="width:0%;background:var(--amber)"></div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">AI + GLSL shaders. The creative
+                        project that shows personality. Claude extracts emotional signature → drives visual parameters.
+                    </p>
+                    <div class="proj-tech">
+                        <span class="tech-tag">React Three Fiber</span><span class="tech-tag">GLSL shaders</span><span
+                            class="tech-tag">Claude API</span><span class="tech-tag">MeshDistortMaterial</span><span
+                            class="tech-tag">Canvas export</span>
+                    </div>
+                    <ul class="proj-timeline">
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-7-1"></div>
+                            <div>
+                                <div class="tl-title">Claude API → mood JSON (palette, motion, geometry)</div>
+                                <div class="tl-time">Days 1–3</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-7-2"></div>
+                            <div>
+                                <div class="tl-title">Custom GLSL shader driven by mood params</div>
+                                <div class="tl-time">Week 2</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-7-3"></div>
+                            <div>
+                                <div class="tl-title">Geometry morphing, particle variations</div>
+                                <div class="tl-time">Week 3</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-7-4"></div>
+                            <div>
+                                <div class="tl-title">PNG export, shareable links, deploy</div>
+                                <div class="tl-time">Week 4</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="proj-notes-label">Notes / blockers</div>
+                    <textarea class="proj-notes-input" id="notes-7" placeholder="Add notes here..."
+                        onchange="saveNotes('7')"></textarea>
+                </div>
+            </div>
+
+            <!-- P8 — NEW: WebXR Portal -->
+            <div class="project-card" id="proj-8">
+                <div class="project-card-header" onclick="toggleProject('proj-8')">
+                    <div class="project-num" style="background:var(--pink-dim);color:var(--pink)">08</div>
+                    <div>
+                        <div class="proj-meta-row">
+                            <span class="proj-cat" style="background:var(--pink-dim);color:var(--pink)">WebXR · AR ·
+                                Three.js</span>
+                            <span class="proj-status s-locked"><span class="status-dot"></span>Month 13–14</span>
+                        </div>
+                        <div class="proj-title">AR Product Viewer</div>
+                        <div class="proj-tagline">Place any 3D model into the real world via WebXR — point your phone,
+                            tap to anchor, walk around it.</div>
+                    </div>
+                    <div class="proj-right">
+                        <div class="proj-duration">~5 weeks</div>
+                        <div class="proj-progress-wrap">
+                            <span class="proj-pct" id="ppct-8">0%</span>
+                            <div class="proj-bar">
+                                <div class="proj-fill" id="pfill-8" style="width:0%;background:var(--pink)"></div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">First WebXR project. Learn the XR
+                        Device API + @react-three/xr while building a real AR use case. Hit testing on real surfaces,
+                        anchor 3D GLTF models, walk around them. Think IKEA but in the browser — zero app install.</p>
+                    <div class="proj-tech">
+                        <span class="tech-tag">WebXR Device API</span><span class="tech-tag">@react-three/xr</span><span
+                            class="tech-tag">React Three Fiber</span><span class="tech-tag">Hit Testing</span><span
+                            class="tech-tag">GLTF / Draco</span><span class="tech-tag">model-viewer fallback</span>
+                    </div>
+                    <ul class="proj-timeline">
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-8-1"></div>
+                            <div>
+                                <div class="tl-title">Learn WebXR API + AR session basics (4 weeks)</div>
+                                <div class="tl-time">Month 13 parallel</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-8-2"></div>
+                            <div>
+                                <div class="tl-title">XR-enabled R3F canvas, AR session start</div>
+                                <div class="tl-time">Week 1</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-8-3"></div>
+                            <div>
+                                <div class="tl-title">Hit test reticle — detect real-world surfaces</div>
+                                <div class="tl-time">Week 2</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-8-4"></div>
+                            <div>
+                                <div class="tl-title">Tap to place, scale controls, multiple models</div>
+                                <div class="tl-time">Week 3</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-8-5"></div>
+                            <div>
+                                <div class="tl-title">iOS fallback (model-viewer), deploy, test on device</div>
+                                <div class="tl-time">Week 4–5</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="proj-notes-label">Notes / blockers</div>
+                    <textarea class="proj-notes-input" id="notes-8" placeholder="Add notes here..."
+                        onchange="saveNotes('8')"></textarea>
+                </div>
+            </div>
+
+            <!-- P9 — NEW: Immersive AR Walkthrough -->
+            <div class="project-card" id="proj-9">
+                <div class="project-card-header" onclick="toggleProject('proj-9')">
+                    <div class="project-num" style="background:var(--pink-dim);color:var(--pink)">09</div>
+                    <div>
+                        <div class="proj-meta-row">
+                            <span class="proj-cat" style="background:var(--pink-dim);color:var(--pink)">WebXR · AR ·
+                                Spatial UI</span>
+                            <span class="proj-status s-locked"><span class="status-dot"></span>Month 14–15</span>
+                        </div>
+                        <div class="proj-title">Spatial Portfolio Preview</div>
+                        <div class="proj-tagline">Walk through a miniature AR gallery of your projects — cards floating
+                            in real space, tap to expand.</div>
+                    </div>
+                    <div class="proj-right">
+                        <div class="proj-duration">~5 weeks</div>
+                        <div class="proj-progress-wrap">
+                            <span class="proj-pct" id="ppct-9">0%</span>
+                            <div class="proj-bar">
+                                <div class="proj-fill" id="pfill-9" style="width:0%;background:var(--pink)"></div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Second WebXR project — more
+                        ambitious. A spatial UI where project cards float anchored to real-world positions. Walk around
+                        your desk and each project is a living 3D card in AR space. Also serves as a teaser for the
+                        final portfolio — recruiters will remember this.</p>
+                    <div class="proj-tech">
+                        <span class="tech-tag">WebXR</span><span class="tech-tag">@react-three/xr</span><span
+                            class="tech-tag">Plane Detection</span><span class="tech-tag">Image Tracking</span><span
+                            class="tech-tag">Spatial anchors</span><span class="tech-tag">React Three Fiber</span>
+                    </div>
+                    <ul class="proj-timeline">
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-9-1"></div>
+                            <div>
+                                <div class="tl-title">Image tracking + marker-based AR</div>
+                                <div class="tl-time">Week 1</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-9-2"></div>
+                            <div>
+                                <div class="tl-title">Floating project cards in 3D — HTML overlay in XR</div>
+                                <div class="tl-time">Week 2</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-9-3"></div>
+                            <div>
+                                <div class="tl-title">Tap interaction — expand card to full project detail</div>
+                                <div class="tl-time">Week 3</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-9-4"></div>
+                            <div>
+                                <div class="tl-title">Spatial anchors — projects stay in fixed real-world spots</div>
+                                <div class="tl-time">Week 4</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-9-5"></div>
+                            <div>
+                                <div class="tl-title">Polish, QR code launcher, deploy + share</div>
+                                <div class="tl-time">Week 5</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="proj-notes-label">Notes / blockers</div>
+                    <textarea class="proj-notes-input" id="notes-9" placeholder="Add notes here..."
+                        onchange="saveNotes('9')"></textarea>
+                </div>
+            </div>
+
+            <!-- P10 — FINAL PORTFOLIO -->
+            <div class="project-card" id="proj-10">
+                <div class="project-card-header" onclick="toggleProject('proj-10')">
+                    <div class="project-num" style="background:var(--accent-dim);color:var(--accent)">10</div>
+                    <div>
+                        <div class="proj-meta-row">
+                            <span class="proj-cat" style="background:var(--accent-dim);color:var(--accent)">3D · AI ·
+                                Final Portfolio</span>
+                            <span class="proj-status s-locked"><span class="status-dot"></span>Month 16–18</span>
+                        </div>
+                        <div class="proj-title">AI-Powered Portfolio v2</div>
+                        <div class="proj-tagline">The final site — immersive R3F hero, live AI chat assistant, all 9
+                            projects showcased.</div>
+                    </div>
+                    <div class="proj-right">
+                        <div class="proj-duration">~8 weeks</div>
+                        <div class="proj-progress-wrap">
+                            <span class="proj-pct" id="ppct-10">0%</span>
+                            <div class="proj-bar">
+                                <div class="proj-fill" id="pfill-10" style="width:0%;background:var(--accent)"></div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Built last, when every skill is at
+                        peak. The culmination — showcasing all projects including the AR experiences. Lighthouse
+                        100/100.</p>
+                    <div class="proj-tech">
+                        <span class="tech-tag">Next.js 14</span><span class="tech-tag">React Three Fiber</span><span
+                            class="tech-tag">GLSL</span><span class="tech-tag">Claude API</span><span
+                            class="tech-tag">WebXR</span><span class="tech-tag">Framer Motion</span><span
+                            class="tech-tag">Postprocessing</span>
+                    </div>
+                    <ul class="proj-timeline">
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-10-1"></div>
+                            <div>
+                                <div class="tl-title">Design system + creative direction</div>
+                                <div class="tl-time">Week 1–2</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-10-2"></div>
+                            <div>
+                                <div class="tl-title">Custom GLSL hero shader + R3F scene</div>
+                                <div class="tl-time">Week 2–3</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-10-3"></div>
+                            <div>
+                                <div class="tl-title">AI chatbot (Claude API) — answers about my work</div>
+                                <div class="tl-time">Week 4</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-10-4"></div>
+                            <div>
+                                <div class="tl-title">Scroll storytelling for all 9 projects</div>
+                                <div class="tl-time">Week 5–6</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-10-5"></div>
+                            <div>
+                                <div class="tl-title">AR teaser section (link to project 09)</div>
+                                <div class="tl-time">Week 6</div>
+                            </div>
+                        </li>
+                        <li class="proj-tl-item">
+                            <div class="tl-dot" id="tl-10-6"></div>
+                            <div>
+                                <div class="tl-title">Performance audit, a11y, Lighthouse 100, launch</div>
+                                <div class="tl-time">Week 7–8</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="proj-notes-label">Notes / blockers</div>
+                    <textarea class="proj-notes-input" id="notes-10" placeholder="Add notes here..."
+                        onchange="saveNotes('10')"></textarea>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-txt">Marwen Labidi · Roadmap 2025–2026 · Tunis, Tunisia</div>
+            <div class="footer-txt">Progress saved in browser · <span id="last-saved"
+                    style="color:var(--accent)">—</span></div>
+        </div>
+    </footer>
+
+    <script>
+        const STATE_KEY = 'ml_roadmap_v1';
+        let state = { steps: {}, projProgress: {}, notes: {} };
+
+        function loadState() {
+            try {
+                const s = localStorage.getItem(STATE_KEY);
+                if (s) state = JSON.parse(s);
+            } catch (e) { }
+        }
+
+        function saveState() {
+            try {
+                localStorage.setItem(STATE_KEY, JSON.stringify(state));
+                const now = new Date();
+                document.getElementById('last-saved').textContent = 'Saved ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            } catch (e) { }
+        }
+
+        // TRACK TOGGLE
+        function toggleTrack(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('open');
+        }
+
+        // PROJECT TOGGLE
+        function toggleProject(id) {
+            const el = document.getElementById(id);
+            const wasOpen = el.classList.contains('open');
+            document.querySelectorAll('.project-card.open').forEach(c => c.classList.remove('open'));
+            if (!wasOpen) el.classList.add('open');
+        }
+
+        // STEP CHECK
+        function toggleStep(el, trackId) {
+            el.classList.toggle('done');
+            updateTrackProgress(trackId);
+            updateOverall();
+            saveState();
+            syncStepState(el, trackId);
+        }
+
+        function syncStepState(el, trackId) {
+            const stepsEl = document.getElementById('steps-' + trackId);
+            if (!stepsEl) return;
+            const checks = stepsEl.querySelectorAll('.step-check');
+            const doneArr = Array.from(checks).map(c => c.classList.contains('done'));
+            state.steps[trackId] = doneArr;
+        }
+
+        function updateTrackProgress(trackId) {
+            const stepsEl = document.getElementById('steps-' + trackId);
+            if (!stepsEl) return;
+            const checks = stepsEl.querySelectorAll('.step-check');
+            const total = checks.length;
+            const done = Array.from(checks).filter(c => c.classList.contains('done')).length;
+            const pct = total ? Math.round(done / total * 100) : 0;
+            const pctEl = document.getElementById('pct-' + trackId);
+            const barEl = document.getElementById('bar-' + trackId);
+            if (pctEl) pctEl.textContent = pct + '%';
+            if (barEl) barEl.style.width = pct + '%';
+        }
+
+        function updateOverall() {
+            const allChecks = document.querySelectorAll('.step-check');
+            const total = allChecks.length;
+            const done = Array.from(allChecks).filter(c => c.classList.contains('done')).length;
+
+            // project progress too
+            let projDone = 0;
+            for (let i = 1; i <= 10; i++) {
+                const p = parseInt(document.getElementById('ppct-' + i)?.textContent) || 0;
+                if (p === 100) projDone++;
+            }
+
+            const pct = total ? Math.round(done / total * 100) : 0;
+            document.getElementById('overall-pct').textContent = pct + '%';
+            document.getElementById('overall-fill').style.width = pct + '%';
+            document.getElementById('nav-pct').textContent = pct + '%';
+            document.getElementById('s-steps').textContent = total;
+            document.getElementById('s-steps-sub').textContent = done + ' done';
+            document.getElementById('s-projects-sub').textContent = projDone + ' completed';
+        }
+
+        // PROJ PROGRESS — click the project's timeline dots
+        document.querySelectorAll('.tl-dot').forEach(dot => {
+            dot.style.cursor = 'pointer';
+            dot.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const id = this.id; // e.g. tl-1-3
+                this.classList.toggle('complete');
+                this.classList.remove('active');
+                // update proj progress
+                const match = id.match(/tl-(\d+)-/);
+                if (match) updateProjProgress(match[1]);
+                updateOverall();
+                saveState();
+                saveTlState();
+            });
+        });
+
+        function updateProjProgress(projId) {
+            const dots = document.querySelectorAll(`[id^="tl-${projId}-"]`);
+            const total = dots.length;
+            const done = Array.from(dots).filter(d => d.classList.contains('complete')).length;
+            const pct = total ? Math.round(done / total * 100) : 0;
+            const pctEl = document.getElementById('ppct-' + projId);
+            const fillEl = document.getElementById('pfill-' + projId);
+            if (pctEl) pctEl.textContent = pct + '%';
+            if (fillEl) fillEl.style.width = pct + '%';
+
+            // update status indicator
+            const card = document.getElementById('proj-' + projId);
+            const statusEl = card?.querySelector('.proj-status');
+            if (statusEl) {
+                statusEl.className = 'proj-status';
+                if (pct === 100) { statusEl.classList.add('s-done'); statusEl.querySelector('.status-dot').nextSibling.textContent = ' Done ✓'; }
+                else if (pct > 0) { statusEl.classList.add('s-active'); }
+                else { statusEl.classList.add('s-locked'); }
+            }
+
+            if (pctEl) state.projProgress[projId] = pct;
+        }
+
+        function saveTlState() {
+            const tlState = {};
+            document.querySelectorAll('[id^="tl-"]').forEach(dot => {
+                tlState[dot.id] = dot.classList.contains('complete');
+            });
+            state.tlState = tlState;
+        }
+
+        // NOTES
+        function saveNotes(projId) {
+            state.notes[projId] = document.getElementById('notes-' + projId)?.value || '';
+            saveState();
+        }
+
+        // FILTER
+        function filterCards(type, btn) {
+            document.querySelectorAll('.nav-filter').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const learnSec = document.getElementById('learn-section');
+            const buildSec = document.getElementById('build-section');
+            if (type === 'all') { learnSec.style.display = ''; buildSec.style.display = ''; }
+            else if (type === 'learn') { learnSec.style.display = ''; buildSec.style.display = 'none'; }
+            else { learnSec.style.display = 'none'; buildSec.style.display = ''; }
+        }
+
+        // RESTORE STATE
+        function restoreState() {
+            // steps
+            for (const [trackId, doneArr] of Object.entries(state.steps || {})) {
+                const stepsEl = document.getElementById('steps-' + trackId);
+                if (!stepsEl) continue;
+                const checks = stepsEl.querySelectorAll('.step-check');
+                doneArr.forEach((done, i) => {
+                    if (done && checks[i]) checks[i].classList.add('done');
+                });
+                updateTrackProgress(trackId);
+            }
+            // timeline dots
+            for (const [dotId, done] of Object.entries(state.tlState || {})) {
+                const el = document.getElementById(dotId);
+                if (el && done) el.classList.add('complete');
+            }
+            for (let i = 1; i <= 10; i++) updateProjProgress(String(i));
+            // notes
+            for (const [projId, note] of Object.entries(state.notes || {})) {
+                const el = document.getElementById('notes-' + projId);
+                if (el) el.value = note;
+            }
+            updateOverall();
+        }
+
+        loadState();
+        restoreState();
+    </script>
+</body>
+
+</html>
